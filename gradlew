@@ -230,5 +230,11 @@ eval "set -- $(
         sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
         tr '\n' ' '
     )" '"$@"'
+    
+    steps {
+    echo 'Compile project'
+    sh "chmod +x gradlew"
+    sh "./gradlew clean build --no-daemon"
+}
 
 exec "$JAVACMD" "$@"
